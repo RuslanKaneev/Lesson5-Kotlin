@@ -3,10 +3,31 @@ package vkpost
 object WallService {
     private var posts = emptyArray<Post>()
 
+    object private
+
+    var idPost: Int = 0
+
     fun add(post: Post): Post {
-        posts+= post
+        idPost++
+        post.id = idPost
+        posts += post
         return posts.last()
     }
 
+    fun update(post: Post): Boolean {
+        for (postVK in posts.withIndex()) {
+            if (postVK.value.id == post.id) {
+                post.ownerId = postVK.value.ownerId
+                post.date = postVK.value.date
+                posts[postVK.index] = post
+                return true
+            }
+        }
+        return false
+    }
 
+
+    fun main(args: Array<String>) {
+
+    }
 }
