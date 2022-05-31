@@ -7,6 +7,7 @@ object WallService {
 
     var idPost: Int = 0
 
+
     fun add(post: Post): Post {
         idPost++
         post.id = idPost
@@ -26,8 +27,23 @@ object WallService {
         return false
     }
 
-
-    fun main(args: Array<String>) {
-
-    }
+}
+fun main(args: Array<String>) {
+    var post: Post = Post(
+        id = 1,
+        ownerId = 1,
+        fromId = 1,
+        createBy = 0,
+        date = 23052022,
+        text = "",
+        replyPostId = 3,
+        friendsOnly = false,
+        comments = Comments(1, true, true, true, true),
+        copyright = "",
+        likes = Likes(1, true, true, 1),
+        reports = Reports(1, true)
+    )
+    var wall = WallService
+    val result = wall.add(post)
+    print(result)
 }
